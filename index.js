@@ -16,7 +16,6 @@ module.exports = function () {
         var files = [];
 
         if (archiveType(file.contents) !== 'bz2') {
-            console.log('asd');
             return cb();
         }
 
