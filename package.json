@@ -22,6 +22,7 @@
     "bz2",
     "bzip2",
     "decompress",
+    "decompressplugin",
     "extract"
   ],
   "dependencies": {
