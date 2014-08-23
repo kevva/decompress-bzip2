@@ -1,7 +1,7 @@
 'use strict';
 
-var archiveType = require('archive-type');
 var bz2 = require('seek-bzip');
+var isBzip2 = require('is-bzip2');
 var path = require('path');
 
 /**
@@ -15,7 +15,7 @@ module.exports = function () {
     return function (file, decompress, cb) {
         var files = [];
 
-        if (archiveType(file.contents) !== 'bz2') {
+        if (!isBzip2(file.contents)) {
             return cb();
         }
 
