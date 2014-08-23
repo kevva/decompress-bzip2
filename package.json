@@ -31,6 +31,6 @@
   },
   "devDependencies": {
     "ava": "0.0.4",
-    "decompress": "^0.3.0"
+    "decompress": "^1.0.4"
   }
 }
