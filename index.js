@@ -16,7 +16,8 @@ module.exports = function () {
         var files = [];
 
         if (!isBzip2(file.contents)) {
-            return cb();
+            cb();
+            return;
         }
 
         files.push({ contents: bz2.decode(file.contents), path: path.basename(file.path).slice(0, -4) });
