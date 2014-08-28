@@ -26,7 +26,7 @@
     "extract"
   ],
   "dependencies": {
-    "is-bzip2": "^0.1.0",
+    "is-bzip2": "^1.0.0",
     "seek-bzip": "^1.0.3"
   },
   "devDependencies": {
