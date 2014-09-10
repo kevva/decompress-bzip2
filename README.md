@@ -1,4 +1,4 @@
-# decompress-bzip2 [![Build Status](https://travis-ci.org/kevva/decompress-bzip2.svg?branch=master)](https://travis-ci.org/kevva/decompress-bzip2)
+# decompress-bzip2 [![Build Status](http://img.shields.io/travis/kevva/decompress-bzip2.svg?style=flat)](https://travis-ci.org/kevva/decompress-bzip2)
 
 > bzip2 decompress plugin
 
