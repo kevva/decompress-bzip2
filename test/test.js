@@ -1,29 +1,27 @@
 'use strict';
 
-var bz2 = require('../');
-var Decompress = require('decompress');
-var exists = require('fs').exists;
+var bzip2 = require('../');
+var File = require('vinyl');
+var fs = require('fs');
+var isJpg = require('is-jpg');
 var path = require('path');
-var rm = require('rimraf');
 var test = require('ava');
 
-test('should decompress a BZ2 file', function (t) {
-    t.plan(3);
+test('decompress a BZ2 file', function (t) {
+    t.plan(2);
 
-    var decompress = new Decompress()
-        .src(path.join(__dirname, 'fixtures/test.jpg.bz2'))
-        .dest(path.join(__dirname, 'tmp'))
-        .use(bz2());
-
-    decompress.decompress(function (err) {
+    fs.readFile(path.join(__dirname, 'fixtures/test.jpg.bz2'), function (err, buf) {
         t.assert(!err);
 
-        exists(path.join(decompress.dest(), 'test.jpg'), function (exist) {
-            t.assert(exist);
-
-            rm(decompress.dest(), function (err) {
-                t.assert(!err);
-            });
+        var stream = bzip2();
+        var file = new File({
+            contents: buf
         });
+
+        stream.on('data', function (files) {
+            t.assert(isJpg(files[0].contents));
+        });
+
+        stream.end(file);
     });
 });

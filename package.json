@@ -27,11 +27,12 @@
   ],
   "dependencies": {
     "is-bzip2": "^1.0.0",
-    "seek-bzip": "^1.0.3"
+    "seek-bzip": "^1.0.3",
+    "through2": "^0.6.1",
+    "vinyl": "^0.4.3"
   },
   "devDependencies": {
-    "ava": "0.0.4",
-    "decompress": "^1.0.4",
-    "rimraf": "^2.2.8"
+    "ava": "^0.0.4",
+    "is-jpg": "^1.0.0"
   }
 }
