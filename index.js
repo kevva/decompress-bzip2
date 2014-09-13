@@ -14,7 +14,7 @@ var through = require('through2');
 
 module.exports = function () {
     return through.obj(function (file, enc, cb) {
-        var files = [];
+        var self = this;
 
         if (file.isNull()) {
             cb(null, file);
@@ -27,15 +27,15 @@ module.exports = function () {
         }
 
         if (!isBzip2(file.contents)) {
-            cb();
+            cb(null, file);
             return;
         }
 
-        files.push(new File({
+        self.push(new File({
             contents: bz2.decode(file.contents),
             path: path.basename(file.path).slice(0, -4)
         }));
 
-        cb(null, files);
+        cb();
     });
 };

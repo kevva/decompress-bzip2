@@ -18,8 +18,8 @@ test('decompress a BZ2 file', function (t) {
             contents: buf
         });
 
-        stream.on('data', function (files) {
-            t.assert(isJpg(files[0].contents));
+        stream.on('data', function (file) {
+            t.assert(isJpg(file.contents));
         });
 
         stream.end(file);
