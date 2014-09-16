@@ -23,7 +23,8 @@
     "bzip2",
     "decompress",
     "decompressplugin",
-    "extract"
+    "extract",
+    "gulpplugin"
   ],
   "dependencies": {
     "is-bzip2": "^1.0.0",
