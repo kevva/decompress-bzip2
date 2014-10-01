@@ -15,16 +15,16 @@ var Decompress = require('decompress');
 var bzip2 = require('decompress-bzip2');
 
 var decompress = new Decompress()
-    .src('foo.jpg.bz2')
-    .dest('dest')
-    .use(bzip2());
+	.src('foo.jpg.bz2')
+	.dest('dest')
+	.use(bzip2());
 
 decompress.run(function (err, files) {
-    if (err) {
-        throw err;
-    }
+	if (err) {
+		throw err;
+	}
 
-    console.log('Files extracted successfully!'); 
+	console.log('Files extracted successfully!'); 
 });
 ```
 
@@ -35,9 +35,9 @@ var gulp = require('gulp');
 var bzip2 = require('decompress-bzip2');
 
 gulp.task('default', function () {
-    return gulp.src('foo.jpg.bz2')
-        .pipe(bzip2())
-        .pipe(gulp.dest('dest'));
+	return gulp.src('foo.jpg.bz2')
+		.pipe(bzip2())
+		.pipe(gulp.dest('dest'));
 });
 ```
 
