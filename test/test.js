@@ -10,7 +10,7 @@ test('decompress a BZ2 file', function (t) {
 	t.plan(2);
 
 	read(path.join(__dirname, 'fixtures/test.jpg.bz2'), function (err, file) {
-		t.assert(!err);
+		t.assert(!err, err);
 
 		var stream = bzip2();
 
