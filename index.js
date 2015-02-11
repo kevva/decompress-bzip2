@@ -6,12 +6,6 @@ var isBzip2 = require('is-bzip2');
 var path = require('path');
 var through = require('through2');
 
-/**
- * bzip2 decompress plugin
- *
- * @api public
- */
-
 module.exports = function () {
 	return through.obj(function (file, enc, cb) {
 		var self = this;
