@@ -3,7 +3,6 @@
 var bzip2 = require('../');
 var isJpg = require('is-jpg');
 var path = require('path');
-var read = require('vinyl-file').read;
 var test = require('ava');
 var vinylFile = require('vinyl-file');
 
