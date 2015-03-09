@@ -33,9 +33,11 @@ You can also use this plugin with [gulp](http://gulpjs.com):
 ```js
 var gulp = require('gulp');
 var bzip2 = require('decompress-bzip2');
+var vinylAssign = require('vinyl-assign');
 
 gulp.task('default', function () {
 	return gulp.src('foo.jpg.bz2')
+		.pipe(vinylAssign({extract: true}))
 		.pipe(bzip2())
 		.pipe(gulp.dest('dest'));
 });

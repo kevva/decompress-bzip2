@@ -20,7 +20,7 @@ module.exports = function () {
 			return;
 		}
 
-		if (!isBzip2(file.contents)) {
+		if (!file.extract || !isBzip2(file.contents)) {
 			cb(null, file);
 			return;
 		}
