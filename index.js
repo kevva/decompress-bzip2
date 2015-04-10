@@ -1,10 +1,10 @@
 'use strict';
 
-var bz2 = require('seek-bzip');
-var File = require('vinyl');
-var isBzip2 = require('is-bzip2');
 var path = require('path');
+var isBzip2 = require('is-bzip2');
+var seekBzip = require('seek-bzip');
 var through = require('through2');
+var Vinyl = require('vinyl');
 
 module.exports = function () {
 	return through.obj(function (file, enc, cb) {
@@ -25,8 +25,8 @@ module.exports = function () {
 			return;
 		}
 
-		self.push(new File({
-			contents: bz2.decode(file.contents),
+		self.push(new Vinyl({
+			contents: seekBzip.decode(file.contents),
 			path: path.basename(file.path).slice(0, -4)
 		}));
 
