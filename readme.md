@@ -1,4 +1,4 @@
-# decompress-bzip2 [![Build Status](http://img.shields.io/travis/kevva/decompress-bzip2.svg?style=flat)](https://travis-ci.org/kevva/decompress-bzip2)
+# decompress-bzip2 [![Build Status](https://travis-ci.org/kevva/decompress-bzip2.svg?branch=master)](https://travis-ci.org/kevva/decompress-bzip2)
 
 > bzip2 decompress plugin
 
@@ -13,42 +13,28 @@ $ npm install --save decompress-bzip2
 ## Usage
 
 ```js
-var Decompress = require('decompress');
-var decompressBzip2 = require('decompress-bzip2');
+const decompress = require('decompress');
+const decompressBzip2 = require('decompress-bzip2');
 
-var decompress = new Decompress()
-	.src('foo.jpg.bz2')
-	.dest('dest')
-	.use(decompressBzip2())
-	.run();
-```
-
-You can also use this plugin with [gulp](http://gulpjs.com):
-
-```js
-var decompressBzip2 = require('decompress-bzip2');
-var gulp = require('gulp');
-var vinylAssign = require('vinyl-assign');
-
-gulp.task('default', function () {
-	return gulp.src('foo.jpg.bz2')
-		.pipe(vinylAssign({extract: true}))
-		.pipe(decompressBzip2())
-		.pipe(gulp.dest('dest'));
+decompress('unicorn.jpg.bz2', 'dist', {
+	plugins: [
+		decompressBzip2({path: 'unicorn.jpg'})
+	]
+}).then(() => {
+	console.log('Files decompressed');
 });
 ```
 
 
 ## API
 
-### decompressBzip2(options)
+### decompressBzip2()(input)
 
-#### options.strip
+#### input
 
-Type: `number`  
-Default: `0`
+Type: `Buffer`
 
-Remove leading directory components from extracted files.
+Buffer to decompress.
 
 
 ## License

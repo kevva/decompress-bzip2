@@ -1,35 +1,28 @@
 'use strict';
+const fileType = require('file-type');
+const seekBzip = require('seek-bzip');
 
-var path = require('path');
-var isBzip2 = require('is-bzip2');
-var seekBzip = require('seek-bzip');
-var through = require('through2');
-var Vinyl = require('vinyl');
+module.exports = opts => input => {
+	opts = opts || {};
 
-module.exports = function () {
-	return through.obj(function (file, enc, cb) {
-		var self = this;
+	if (!Buffer.isBuffer(input)) {
+		return Promise.reject(new TypeError(`Expected a Buffer, got ${typeof input}`));
+	}
 
-		if (file.isNull()) {
-			cb(null, file);
-			return;
+	if (!fileType(input) || fileType(input).ext !== 'bz2') {
+		return Promise.resolve([]);
+	}
+
+	return new Promise((resolve, reject) => {
+		try {
+			const data = seekBzip.decode(input);
+
+			resolve([{
+				data,
+				path: opts.path
+			}]);
+		} catch (err) {
+			reject(err);
 		}
-
-		if (file.isStream()) {
-			cb(new Error('Streaming is not supported'));
-			return;
-		}
-
-		if (!file.extract || !isBzip2(file.contents)) {
-			cb(null, file);
-			return;
-		}
-
-		self.push(new Vinyl({
-			contents: seekBzip.decode(file.contents),
-			path: path.basename(file.path).slice(0, -4)
-		}));
-
-		cb();
 	});
 };

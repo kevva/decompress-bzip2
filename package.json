@@ -10,10 +10,10 @@
     "url": "https://github.com/kevva"
   },
   "engines": {
-    "node": ">=0.10.0"
+    "node": ">=4"
   },
   "scripts": {
-    "test": "node test/test.js"
+    "test": "xo && ava"
   },
   "files": [
     "index.js"
@@ -23,18 +23,16 @@
     "bzip2",
     "decompress",
     "decompressplugin",
-    "extract",
-    "gulpplugin"
+    "extract"
   ],
   "dependencies": {
-    "is-bzip2": "^1.0.0",
-    "seek-bzip": "^1.0.3",
-    "through2": "^0.6.1",
-    "vinyl": "^0.4.3"
+    "file-type": "^4.3.0",
+    "seek-bzip": "^1.0.5"
   },
   "devDependencies": {
-    "ava": "^0.0.4",
+    "ava": "*",
     "is-jpg": "^1.0.0",
-    "vinyl-file": "^1.1.0"
+    "pify": "^2.3.0",
+    "xo": "*"
   }
 }
