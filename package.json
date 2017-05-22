@@ -1,6 +1,6 @@
 {
   "name": "decompress-bzip2",
-  "version": "3.0.0",
+  "version": "4.0.0",
   "description": "decompress bzip2 plugin",
   "license": "MIT",
   "repository": "kevva/decompress-bzip2",
